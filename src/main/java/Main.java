@@ -3,8 +3,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-import static main.java.utils.Constants.KEY_TO_WINDOWS_CHROME_DRIVER;
-import static main.java.utils.Constants.PATH_TO_WINDOWS_CHROME_DRIVER;
+import static utils.Constants.KEY_TO_WINDOWS_CHROME_DRIVER;
+import static utils.Constants.PATH_TO_WINDOWS_CHROME_DRIVER;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
