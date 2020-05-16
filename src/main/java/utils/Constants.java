@@ -1,4 +1,4 @@
-package main.java.utils;
+package utils;
 
 public class Constants {
     public static final String PATH_TO_WINDOWS_CHROME_DRIVER = "src/main/resources/chromedriver.exe";
