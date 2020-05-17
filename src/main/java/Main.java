@@ -7,7 +7,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 import static locators.AllAboutGoodsLocators.ADD_TO_CART_BUTTON;
-import static locators.ProductReviewsLocators.*;
+import static locators.ProductReviewsLocators.PRODUCT_REVIEW_DROPDOWN_SORT;
+import static locators.ProductReviewsLocators.PRODUCT_REVIEW_TAB;
 import static utils.Constants.*;
 
 public class Main {
