@@ -1,7 +1,6 @@
 package locators;
 
 public class ProductReviewsLocators {
-    public static final String PRODUCT_REVIEW_TAB = "//*[@class = 'product-tabs__list']/li[3]";
     public static final String PRODUCT_REVIEW_COUNTER = "//*[@class = 'product-tabs__link-text']";
     public static final String PRODUCT_REVIEW_TAB_HEADER = "//*[@class = 'product-tabs__heading']";
     public static final String PRODUCT_REVIEW_TAB_HEADER_COUNTER = "class = 'product-tabs__heading_color_gray'";
