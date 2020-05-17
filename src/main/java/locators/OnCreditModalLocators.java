@@ -1,6 +1,7 @@
 package locators;
 
 public class OnCreditModalLocators {
+
     public static final String CLOSE_THE_MODAL = ".modal__close";
     public static final String STANDARD_CREDIT_SELECT = "//*[contains (text(), 'Стандарт')]//following::div[1]//select";
     public static final String STANDARD_CREDIT_BUTTON = "//*[contains (text(), 'Стандарт')]//following::div[2]//button";
