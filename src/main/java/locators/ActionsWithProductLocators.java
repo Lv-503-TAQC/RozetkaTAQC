@@ -1,6 +1,6 @@
 package locators;
 
-public class ActionsWithProductLocators {
+public class AllAboutGoodsLocators {
 
     public static final String ADD_TO_CART_BUTTON = ".toOrder";
     public static final String ADD_TO_COMPARE_LIST_BUTTON = "//*[@class = 'product__compare']//button";
