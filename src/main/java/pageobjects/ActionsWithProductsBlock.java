@@ -48,3 +48,4 @@ public class ActionsWithProductsBlock extends BasePageObject{
         return this;
     }
 }
+
