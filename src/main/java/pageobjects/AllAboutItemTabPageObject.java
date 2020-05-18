@@ -76,7 +76,7 @@ public class AllAboutItemTabPageObject extends BasePageObject{
      */
     public AllAboutItemTabPageObject goToPremiumDeliveryDetails(){
         premiumDelivery = new Button(driver,AllAboutProductLocators.PREMIUM_DELIVERY_LINK).click();
-        return new AllAboutItemTabPageObject(driver);
+        return this;
 
     }
 
