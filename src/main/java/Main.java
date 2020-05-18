@@ -1,9 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.concurrent.TimeUnit;
-
 import static locators.ProductReviewsLocators.PRODUCT_REVIEW_LINK_TO_COMMENT;
 import static locators.ProductTabsList.PRODUCT_REVIEW_TAB;
 import static utils.Constants.KEY_TO_WINDOWS_CHROME_DRIVER;
