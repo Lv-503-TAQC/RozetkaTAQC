@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageelements.Button;
 import pageelements.TextField;
-
 import java.util.List;
 
 public class AllAboutItemTabPageObject extends BasePageObject{
