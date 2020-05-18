@@ -9,9 +9,7 @@ import pageelements.TextField;
 
 import java.util.List;
 
-import static utils.Constants.*;
-
-public class AllAboutItemTab extends BasePageObject{
+public class AllAboutItemTabPageObject extends BasePageObject{
 
     private List<WebElement> optionList;
     private List<WebElement> serviceList;
@@ -23,7 +21,7 @@ public class AllAboutItemTab extends BasePageObject{
     private List<WebElement> productPicktos;
     private String productBrief;
 
-    public AllAboutItemTab(WebDriver driver) {
+    public AllAboutItemTabPageObject(WebDriver driver) {
         super(driver);
     }
 
@@ -68,7 +66,7 @@ public class AllAboutItemTab extends BasePageObject{
      * @return AllAboutItemTab
      * work in progress!
      */
-    public AllAboutItemTab setDeliveryCity() {
+    public AllAboutItemTabPageObject setDeliveryCity() {
         chooseCity = new Button(driver, AllAboutProductLocators.DELIVERY_CITY_MODAL).click();
         return this;
     }
@@ -77,9 +75,9 @@ public class AllAboutItemTab extends BasePageObject{
      * go to the page with all the details about Premium delivery
      * @return AllAboutItemTab
      */
-    public AllAboutItemTab goToPremiumDeliveryDetails(){
+    public AllAboutItemTabPageObject goToPremiumDeliveryDetails(){
         premiumDelivery = new Button(driver,AllAboutProductLocators.PREMIUM_DELIVERY_LINK).click();
-        return new AllAboutItemTab(driver);
+        return new AllAboutItemTabPageObject(driver);
 
     }
 

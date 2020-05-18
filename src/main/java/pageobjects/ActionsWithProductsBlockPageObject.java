@@ -1,15 +1,11 @@
 package pageobjects;
 
 import locators.ActionsWithProductsLocators;
-import locators.AllAboutProductLocators;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pageelements.Button;
 import pageelements.TextField;
 
-import java.util.List;
-
-public class ActionsWithProductsBlock extends BasePageObject{
+public class ActionsWithProductsBlockPageObject extends BasePageObject{
 
     private Button addToCart;
     private Button addToCompareList;
@@ -17,21 +13,21 @@ public class ActionsWithProductsBlock extends BasePageObject{
     private String creditInfo;
     private Button buyOnCredit;
 
-    public ActionsWithProductsBlock(WebDriver driver) {
+    public ActionsWithProductsBlockPageObject(WebDriver driver) {
         super(driver);
     }
 
-    public ActionsWithProductsBlock addToCart() {
+    public ActionsWithProductsBlockPageObject addToCart() {
         addToCart = new Button(driver, ActionsWithProductsLocators.ADD_TO_CART_BUTTON).click();
         return this;
     }
 
-    public ActionsWithProductsBlock addToCompareList() {
+    public ActionsWithProductsBlockPageObject addToCompareList() {
         addToCompareList = new Button(driver, ActionsWithProductsLocators.ADD_TO_COMPARE_LIST_BUTTON).click();
         return this;
     }
 
-    public ActionsWithProductsBlock addToWishList() {
+    public ActionsWithProductsBlockPageObject addToWishList() {
         addToWishList = new Button(driver, ActionsWithProductsLocators.ADD_TO_WISH_LIST).click();
         return this;
 
@@ -43,7 +39,7 @@ public class ActionsWithProductsBlock extends BasePageObject{
 
     }
 
-    public ActionsWithProductsBlock setDeliveryCity() {
+    public ActionsWithProductsBlockPageObject setDeliveryCity() {
         buyOnCredit = new Button(driver, ActionsWithProductsLocators.BUY_ON_CREDIT).click();
         return this;
     }
