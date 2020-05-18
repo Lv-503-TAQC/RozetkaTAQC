@@ -1,15 +1,13 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
-import static locators.AllAboutGoodsLocators.ADD_TO_CART_BUTTON;
-import static locators.ProductReviewsLocators.PRODUCT_REVIEW_DROPDOWN_SORT;
-import static locators.ProductReviewsLocators.PRODUCT_REVIEW_TAB;
-import static utils.Constants.*;
+import static locators.ProductReviewsLocators.PRODUCT_REVIEW_LINK_TO_COMMENT;
+import static locators.ProductTabsList.PRODUCT_REVIEW_TAB;
+import static utils.Constants.KEY_TO_WINDOWS_CHROME_DRIVER;
+import static utils.Constants.PATH_TO_WINDOWS_CHROME_DRIVER;
 
 public class Main {
     public static final String POPUP_BANNER_CLOSE_BUTTON = "//*[@class = 'exponea-close-cross']";
@@ -32,7 +30,7 @@ public class Main {
                 driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).click();
             }
 
-            driver.findElement(By.xpath(ADD_TO_CART_BUTTON)).click();
+            driver.findElement(By.xpath(PRODUCT_REVIEW_LINK_TO_COMMENT)).click();
             Thread.sleep(2000);
 
         } finally {
