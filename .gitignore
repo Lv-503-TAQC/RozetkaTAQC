@@ -43,4 +43,4 @@ out
 test-output
 
 #.iml file
-.iml
+*.iml
