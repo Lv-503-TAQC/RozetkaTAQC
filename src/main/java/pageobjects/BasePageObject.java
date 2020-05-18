@@ -13,7 +13,6 @@ public abstract class BasePageObject {
         this.driver = driver;
     }
 
-
     public BasePageObject goToUrl(String url) {
         driver.get(url);
         return this;
