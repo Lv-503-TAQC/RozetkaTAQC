@@ -10,8 +10,8 @@ public class AllAboutProductLocators {
     public static final String ADDITIONAL_SERVICES_LIST = "//*[@class = 'additional-services']//li";
     //Locators to find the desirable element of the desirable additional service
     public static final String ADDITIONAL_SERVICE_CHECKBOX = "//*[@class = 'additional-service__checkbox']";
-    public static final String ADDITIONAL_SERVICE_INFO = "//*[@class = 'additional-service__checkbox']//button";
-    public static final String ADDITIONAL_SERVICE_DROPDOWN = "//*[@class = 'additional-service']//select";
+    public static final String ADDITIONAL_SERVICE_INFO = "//button";
+    public static final String ADDITIONAL_SERVICE_DROPDOWN = "//select";
     public static final String ADDITIONAL_SERVICE_PRICE = "//*[@class = 'additional-service__price']";
     public static final String SELLER_NAME = "//*[@class = 'product-seller__title']";
     public static final String SELLER_FEEDBACK = "//*[@class = 'product-seller__feedback']";

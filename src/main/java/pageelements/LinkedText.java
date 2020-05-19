@@ -3,14 +3,14 @@ package pageelements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LinkedLabel extends Label {
+public class LinkedText extends TextField {
 
 
-    public LinkedLabel(WebDriver driver, String xpath) {
+    public LinkedText(WebDriver driver, String xpath) {
         super(driver, xpath);
     }
 
-    public Label click() {
+    public TextField click() {
         this.element.click();
         return this;
     }

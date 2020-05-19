@@ -8,23 +8,24 @@ import pageelements.*;
 
 import java.util.List;
 
-public class AllAboutProductTabPageObject extends BasePageObject{
+public class AllAboutProductTabPO extends BasePageObject {
 
-    private List<WebElement> optionList;
+    private List<WebElement> prodOptionList;
     private List<WebElement> serviceList;
+    private WebElement serviceDropdown;
     private String sellerName;
     private String sellerFeedback;
     private List<WebElement> bonusPicktos;
-    private Button chooseCity;
+    private TextField chooseCity;
     private Button premiumDelivery;
     private List<WebElement> productPicktos;
     private String productBrief;
     private String confirmInStock;
     private String confirmOutOfStock;
     private Button notifyWhenInStock;
-    private Label detailedInfoLink;
+    private TextField detailedInfoLink;
 
-    public AllAboutProductTabPageObject(WebDriver driver) {
+    public AllAboutProductTabPO(WebDriver driver) {
         super(driver);
     }
 
@@ -32,8 +33,8 @@ public class AllAboutProductTabPageObject extends BasePageObject{
      * @return list of all the available options to the product
      */
     private List<WebElement> createListOfProductOptions() {
-        optionList = driver.findElements(By.xpath(AllAboutProductLocators.PRODUCT_OPTIONS));
-        return optionList;
+        prodOptionList = driver.findElements(By.xpath(AllAboutProductLocators.PRODUCT_OPTIONS));
+        return prodOptionList;
     }
 
     /**
@@ -44,14 +45,14 @@ public class AllAboutProductTabPageObject extends BasePageObject{
         return serviceList;
     }
 
-    public String getSellerName(){
-        sellerName = new TextField (driver,AllAboutProductLocators.SELLER_NAME).getText();
+    public String getSellerName() {
+        sellerName = new TextField(driver, AllAboutProductLocators.SELLER_NAME).getText();
         return sellerName;
 
     }
 
-    public String getSellerFeedback(){
-        sellerFeedback = new TextField (driver,AllAboutProductLocators.SELLER_FEEDBACK).getText();
+    public String getSellerFeedback() {
+        sellerFeedback = new TextField(driver, AllAboutProductLocators.SELLER_FEEDBACK).getText();
         return sellerFeedback;
 
     }
@@ -66,20 +67,22 @@ public class AllAboutProductTabPageObject extends BasePageObject{
 
     /**
      * select delivery city in modal window
+     *
      * @return AllAboutProductTabPageObject
      * work in progress!
      */
-    public AllAboutProductTabPageObject setDeliveryCity() {
-        chooseCity = new Button(driver, AllAboutProductLocators.DELIVERY_CITY_MODAL).click();
+    public AllAboutProductTabPO setDeliveryCity() {
+        chooseCity = new LinkedText(driver, AllAboutProductLocators.DELIVERY_CITY_MODAL).click();
         return this;
     }
 
     /**
      * go to the page with all the details about Premium delivery
+     *
      * @return AllAboutProductTabPageObject
      */
-    public AllAboutProductTabPageObject goToPremiumDeliveryDetails(){
-        premiumDelivery = new LinkedButton(driver,AllAboutProductLocators.PREMIUM_DELIVERY_LINK).click();
+    public AllAboutProductTabPO goToPremiumDeliveryDetails() {
+        premiumDelivery = new LinkedButton(driver, AllAboutProductLocators.PREMIUM_DELIVERY_LINK).click();
         return this;
 
     }
@@ -92,31 +95,31 @@ public class AllAboutProductTabPageObject extends BasePageObject{
         return productPicktos;
     }
 
-    public String getProductBriefInfo(){
-        productBrief = new TextField (driver,AllAboutProductLocators.PRODUCT_INFO_BRIEF).getText();
+    public String getProductBriefInfo() {
+        productBrief = new TextField(driver, AllAboutProductLocators.PRODUCT_INFO_BRIEF).getText();
         return productBrief;
 
     }
 
-    public String confirmInStock(){
-        confirmInStock = new TextField (driver,AllAboutProductLocators.PRODUCT_IN_STOCK).getText();
+    public String confirmInStock() {
+        confirmInStock = new TextField(driver, AllAboutProductLocators.PRODUCT_IN_STOCK).getText();
         return confirmInStock;
 
     }
 
-    public String confirmOutOfStock(){
-        confirmOutOfStock = new TextField (driver,AllAboutProductLocators.PRODUCT_OUT_OF_STOCK).getText();
+    public String confirmOutOfStock() {
+        confirmOutOfStock = new TextField(driver, AllAboutProductLocators.PRODUCT_OUT_OF_STOCK).getText();
         return confirmOutOfStock;
 
     }
 
-    public AllAboutProductTabPageObject notifyWhenInStock() {
+    public AllAboutProductTabPO notifyWhenInStock() {
         notifyWhenInStock = new Button(driver, AllAboutProductLocators.NOTIF_WHEN_IN_STOCK_BTN).click();
         return this;
     }
 
-    public AllAboutProductTabPageObject goToDetailedInfo(){
-        detailedInfoLink = new LinkedLabel(driver,AllAboutProductLocators. DETAILED_PRODUCT_INFO_LINK).click();
+    public AllAboutProductTabPO goToDetailedInfo() {
+        detailedInfoLink = new LinkedText(driver, AllAboutProductLocators.DETAILED_PRODUCT_INFO_LINK).click();
         return this;
 
     }

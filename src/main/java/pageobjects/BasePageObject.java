@@ -10,6 +10,7 @@ public abstract class BasePageObject {
     protected WebDriver driver;
 
     public BasePageObject(WebDriver driver) {
+
         this.driver = driver;
     }
 
