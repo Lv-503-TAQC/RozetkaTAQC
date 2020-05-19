@@ -1,7 +1,12 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pageobjects.AllAboutProductTabPO;
+import pageobjects.ProductOptionsPO;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static locators.ProductReviewsLocators.*;
@@ -23,19 +28,25 @@ public class Main {
         try {
             driver.get("https://rozetka.com.ua/ua/apple_macbook_air_2020_256_space_gray/p197128590/");
 
-            driver.findElement(By.xpath(PRODUCT_REVIEW_TAB)).click();
-            Thread.sleep(2000);
-
             boolean displayed = driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).isDisplayed();
             if (displayed) {
                 driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).click();
                 Thread.sleep(2000);
             }
-            Thread.sleep(2000);
 
-            driver.findElement(By.xpath(PRODUCT_REVIEW_SHOW_MORE_REPLIES)).click();
             Thread.sleep(2000);
+            AllAboutProductTabPO object1 = new AllAboutProductTabPO(driver);
+            ArrayList<WebElement> list =  new ArrayList(object1.createListOfCervices());
 
+            ProductOptionsPO object2 = new ProductOptionsPO(driver);
+            WebElement zero = list.get(0);
+            object2.clickCheckbox(zero);
+
+            Thread.sleep(2000);
+            WebElement one = list.get(1);
+
+            object2.clickCheckbox(one);
+            Thread.sleep(2000);
         } finally {
             driver.quit();
         }

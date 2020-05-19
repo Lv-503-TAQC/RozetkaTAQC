@@ -32,7 +32,7 @@ public class AllAboutProductTabPO extends BasePageObject {
     /**
      * @return list of all the available options to the product
      */
-    private List<WebElement> createListOfProductOptions() {
+    public List<WebElement> createListOfProductOptions() {
         prodOptionList = driver.findElements(By.xpath(AllAboutProductLocators.PRODUCT_OPTIONS));
         return prodOptionList;
     }
@@ -40,7 +40,7 @@ public class AllAboutProductTabPO extends BasePageObject {
     /**
      * @return list of all the available additional services to the product
      */
-    private List<WebElement> createListOfCervices() {
+    public List<WebElement> createListOfCervices() {
         serviceList = driver.findElements(By.xpath(AllAboutProductLocators.ADDITIONAL_SERVICES_LIST));
         return serviceList;
     }
@@ -99,23 +99,6 @@ public class AllAboutProductTabPO extends BasePageObject {
         productBrief = new TextField(driver, AllAboutProductLocators.PRODUCT_INFO_BRIEF).getText();
         return productBrief;
 
-    }
-
-    public String confirmInStock() {
-        confirmInStock = new TextField(driver, AllAboutProductLocators.PRODUCT_IN_STOCK).getText();
-        return confirmInStock;
-
-    }
-
-    public String confirmOutOfStock() {
-        confirmOutOfStock = new TextField(driver, AllAboutProductLocators.PRODUCT_OUT_OF_STOCK).getText();
-        return confirmOutOfStock;
-
-    }
-
-    public AllAboutProductTabPO notifyWhenInStock() {
-        notifyWhenInStock = new Button(driver, AllAboutProductLocators.NOTIF_WHEN_IN_STOCK_BTN).click();
-        return this;
     }
 
     public AllAboutProductTabPO goToDetailedInfo() {

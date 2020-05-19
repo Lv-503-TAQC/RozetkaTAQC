@@ -3,16 +3,10 @@ package locators;
 public class AllAboutProductLocators {
 
     public static final String PRODUCT_OPTIONS = "//*[@class = 'product-main__parameters']//li";
-    public static final String PRODUCT_OUT_OF_STOCK = "//*[contains (@class,'product__status_color_gray')]";
-    public static final String PRODUCT_IN_STOCK = "//*[contains (@class,'product__status_color_green')]";
+    public static final String IN_STOCK_STRING = "//*[contains (@class,'product__status')]";
     public static final String NOTIF_WHEN_IN_STOCK_BTN = "//*[@class = 'product-statuses']//button";
     //Locator to find the list of all the additional cervices
     public static final String ADDITIONAL_SERVICES_LIST = "//*[@class = 'additional-services']//li";
-    //Locators to find the desirable element of the desirable additional service
-    public static final String ADDITIONAL_SERVICE_CHECKBOX = "//*[@class = 'additional-service__checkbox']";
-    public static final String ADDITIONAL_SERVICE_INFO = "//button";
-    public static final String ADDITIONAL_SERVICE_DROPDOWN = "//select";
-    public static final String ADDITIONAL_SERVICE_PRICE = "//*[@class = 'additional-service__price']";
     public static final String SELLER_NAME = "//*[@class = 'product-seller__title']";
     public static final String SELLER_FEEDBACK = "//*[@class = 'product-seller__feedback']";
     public static final String SELLER_LOGO = "//*[@class = 'product-seller__logo']//img";

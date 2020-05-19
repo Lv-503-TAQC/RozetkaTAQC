@@ -2,7 +2,6 @@ package pageelements;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 public class Checkbox extends BaseElement {
 
@@ -13,6 +12,10 @@ public class Checkbox extends BaseElement {
 
     public Checkbox(WebElement elementToParse, String xpath) {
         super(elementToParse, xpath);
+    }
 
+    public Checkbox click(){
+        this.element.click();
+        return this;
     }
 }
