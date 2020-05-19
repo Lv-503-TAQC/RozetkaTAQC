@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 public class Button extends BaseElement {
 
     public Button(WebDriver driver, String xpath) {
+
         super(driver, xpath);
     }
 

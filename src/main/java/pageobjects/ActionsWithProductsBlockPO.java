@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import pageelements.Button;
 import pageelements.TextField;
 
-public class ActionsWithProductsBlockPageObject extends BasePageObject{
+public class ActionsWithProductsBlockPO extends BasePageObject{
 
     private Button addToCart;
     private Button addToCompareList;
@@ -13,21 +13,21 @@ public class ActionsWithProductsBlockPageObject extends BasePageObject{
     private String creditInfo;
     private Button buyOnCredit;
 
-    public ActionsWithProductsBlockPageObject(WebDriver driver) {
+    public ActionsWithProductsBlockPO(WebDriver driver) {
         super(driver);
     }
 
-    public ActionsWithProductsBlockPageObject addToCart() {
+    public ActionsWithProductsBlockPO addToCart() {
         addToCart = new Button(driver, ActionsWithProductsLocators.ADD_TO_CART_BUTTON).click();
         return this;
     }
 
-    public ActionsWithProductsBlockPageObject addToCompareList() {
+    public ActionsWithProductsBlockPO addToCompareList() {
         addToCompareList = new Button(driver, ActionsWithProductsLocators.ADD_TO_COMPARE_LIST_BUTTON).click();
         return this;
     }
 
-    public ActionsWithProductsBlockPageObject addToWishList() {
+    public ActionsWithProductsBlockPO addToWishList() {
         addToWishList = new Button(driver, ActionsWithProductsLocators.ADD_TO_WISH_LIST).click();
         return this;
 
@@ -39,7 +39,7 @@ public class ActionsWithProductsBlockPageObject extends BasePageObject{
 
     }
 
-    public ActionsWithProductsBlockPageObject setDeliveryCity() {
+    public ActionsWithProductsBlockPO setDeliveryCity() {
         buyOnCredit = new Button(driver, ActionsWithProductsLocators.BUY_ON_CREDIT).click();
         return this;
     }
