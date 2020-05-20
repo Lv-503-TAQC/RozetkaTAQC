@@ -3,8 +3,6 @@ package pageobjects;
 import org.openqa.selenium.WebDriver;
 
 
-import static utils.Constants.*;
-
 public abstract class BasePageObject {
 
     protected WebDriver driver;
