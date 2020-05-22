@@ -31,10 +31,6 @@ public class Main {
                 driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).click();
                 Thread.sleep(2000);
             }
-            Thread.sleep(2000);
-
-            driver.findElement(By.xpath(PRODUCT_REVIEW_SHOW_MORE_REPLIES)).click();
-            Thread.sleep(2000);
 
         } finally {
             driver.quit();
