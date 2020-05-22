@@ -1,7 +1,10 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pageobjects.AllAboutProductTabPO;
+import pageobjects.ProductOptionsPO;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -29,6 +32,12 @@ public class Main {
                 driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).click();
                 Thread.sleep(2000);
             }
+            AllAboutProductTabPO object1 = new AllAboutProductTabPO(driver);
+            List<ProductOptionsPO> list = object1.createListOfCervices();
+
+            ProductOptionsPO object2 = list.get(1);
+
+            System.out.println("Checkbox found:"+object2.readCheckbox();
 
         } finally {
             driver.quit();

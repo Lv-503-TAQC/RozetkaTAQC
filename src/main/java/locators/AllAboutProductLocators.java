@@ -27,6 +27,7 @@ public enum AllAboutProductLocators implements Locator {
 
     private By path;
     private AllAboutProductLocators(By path) {
+
         this.path = path;
     }
 

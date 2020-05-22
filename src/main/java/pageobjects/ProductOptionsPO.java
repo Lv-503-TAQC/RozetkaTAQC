@@ -1,5 +1,6 @@
 package pageobjects;
 
+import locators.ProductServicesLocators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageelements.Button;
@@ -13,45 +14,122 @@ import static locators.ProductServicesLocators.*;
 
 public class ProductOptionsPO extends BasePageObject {
 
+    private WebElement element;
 
     private DropDown prodOptionDropdown;
     private Checkbox prodOptionCheckbox;
+    private String checkboxValue;
     private String price;
     private Button info;
     private List<WebElement> dropdOptions;
 
 
     public ProductOptionsPO(WebDriver driver) {
+
         super(driver);
     }
 
+    public ProductOptionsPO(WebDriver driver, WebElement element) {
+        super(driver);
+        this.element = element;
+    }
 
-    public DropDown getDropdown(WebElement listItem) {
-        prodOptionDropdown = new DropDown(listItem, ADDITIONAL_SERVICE_DROPDOWN);
+    /**
+     * Method finds the dropdown element in product service item.
+     * Method which finds the list of all product service items available
+     * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
+     * @param element - desirable service item.
+     * @return the dropdown element.
+     */
+    public DropDown getDropdown(WebElement element) {
+        prodOptionDropdown = new DropDown(element, ADDITIONAL_SERVICE_DROPDOWN);
         return prodOptionDropdown;
     }
 
-    public ProductOptionsPO clickCheckbox(WebElement listItem) {
-        WebElement locator = driver.findElement(ADDITIONAL_SERVICE_CHECKBOX.getPath());
-       // prodOptionCheckbox = new Checkbox(listItem, ProductServicesLocators.ADDITIONAL_SERVICE_CHECKBOX).click();
-        locator.click();
-        return this;
-    }
-
-    public String getPrice(WebElement listItem) {
-        price = new TextField(listItem, ADDITIONAL_SERVICE_PRICE).getText();
-        return price;
-    }
-
-    public ProductOptionsPO clickInfo(WebElement listItem) {
-        info = new Button(listItem, ADDITIONAL_SERVICE_INFO).click();
-        return this;
-    }
-
+    /**
+     * Method finds the options of the dropdown element.
+     * Method which finds the dropdown is above
+     * (see getDropdown()).
+     * @param dropDown - desirable service item.
+     * @return the dropdown element.
+     */
     public List<WebElement> getOptions (DropDown dropDown) {
         dropdOptions = dropDown.getOptions(dropDown);
         return dropdOptions;
     }
+
+    /**
+     * Method reads the option value.
+     * Method which gets the options is above
+     * (see getOptions()).
+     * @param option - desirable dropdown option.
+     * @return the ProductOptionsPO object.
+     */
+    public ProductOptionsPO readOption (WebElement option) {
+        option.getText();
+        return this;
+    }
+
+    /**
+     * Method selects the options of the dropdown element.
+     * Method which gets the options is above
+     * (see getOptions()).
+     * @param option - desirable dropdown option.
+     * @return the ProductOptionsPO object.
+     */
+    public ProductOptionsPO selectOption (WebElement option) {
+        option.click();
+        return this;
+    }
+
+    /**
+     * Method finds the checkbox element in product service item and reads it.
+     * Method which finds the list of all product service items available
+     * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
+     * @return the dropdown element.
+     */
+    public String readCheckbox(WebElement element) {
+       checkboxValue = new TextField (element, ADDITIONAL_SERVICE_CHECKBOX).getText();
+       return checkboxValue;
+    }
+
+    /**
+     * Method finds the checkbox element in product service item and enables it.
+     * Method which finds the list of all product service items available
+     * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
+     * @param element - desirable service item.
+     * @return the dropdown element.
+     */
+    public ProductOptionsPO clickCheckbox(WebElement element) {
+        prodOptionCheckbox = new Checkbox(element, ADDITIONAL_SERVICE_CHECKBOX).click();
+        return this;
+    }
+
+    /**
+     * Method finds the price element in product service item.
+     * Method which finds the list of all product service items available
+     * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
+     * @param element - desirable service item.
+     * @return String with a price.
+     */
+    public String getPrice(WebElement element) {
+        price = new TextField(element, ADDITIONAL_SERVICE_PRICE).getText();
+        return price;
+    }
+
+    /**
+     * Method finds the info button element in product service item.
+     * Method which finds the list of all product service items available
+     * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
+     * @param element - desirable service item.
+     * @return ProductOptionsPO object.
+     */
+    public ProductOptionsPO clickInfo(WebElement element) {
+        info = new Button(element, ADDITIONAL_SERVICE_INFO).click();
+        return this;
+    }
+
+
 }
 
 

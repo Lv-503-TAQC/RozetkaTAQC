@@ -30,6 +30,7 @@ public class DropDown extends BaseElement {
     }
 
     public List<WebElement> getOptions(DropDown dropdownToParse) {
+
         return this.select.getAllSelectedOptions();
     }
 }

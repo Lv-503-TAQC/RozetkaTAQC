@@ -22,6 +22,7 @@ public abstract class BaseElement {
     }
 
     public BaseElement(WebElement element) {
+
         this.element = element;
     }
 

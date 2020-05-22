@@ -14,9 +14,6 @@ public class ProductReviewPageObject extends BasePageObject {
     private Button addNewCommentBtn;
     private Button showMoreCommentsBtn;
     private Button goToCommentLBtn;
-
-    private LinkedButton reviewTabBtn;
-
     private Label reviewTabCounterLbl;
     private Label reviewHeaderLbl;
     private Label reviewHeaderCounterLbl;
