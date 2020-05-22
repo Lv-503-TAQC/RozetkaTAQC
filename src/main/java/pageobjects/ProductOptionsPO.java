@@ -88,7 +88,7 @@ public class ProductOptionsPO extends BasePageObject {
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
      * @return the dropdown element.
      */
-    public String readCheckbox(WebElement element) {
+    public String readCheckbox() {
        checkboxValue = new TextField (element, ADDITIONAL_SERVICE_CHECKBOX).getText();
        return checkboxValue;
     }
@@ -97,10 +97,9 @@ public class ProductOptionsPO extends BasePageObject {
      * Method finds the checkbox element in product service item and enables it.
      * Method which finds the list of all product service items available
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
-     * @param element - desirable service item.
      * @return the dropdown element.
      */
-    public ProductOptionsPO clickCheckbox(WebElement element) {
+    public ProductOptionsPO clickCheckbox() {
         prodOptionCheckbox = new Checkbox(element, ADDITIONAL_SERVICE_CHECKBOX).click();
         return this;
     }
@@ -109,10 +108,9 @@ public class ProductOptionsPO extends BasePageObject {
      * Method finds the price element in product service item.
      * Method which finds the list of all product service items available
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
-     * @param element - desirable service item.
      * @return String with a price.
      */
-    public String getPrice(WebElement element) {
+    public String getPrice() {
         price = new TextField(element, ADDITIONAL_SERVICE_PRICE).getText();
         return price;
     }
@@ -121,10 +119,9 @@ public class ProductOptionsPO extends BasePageObject {
      * Method finds the info button element in product service item.
      * Method which finds the list of all product service items available
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
-     * @param element - desirable service item.
      * @return ProductOptionsPO object.
      */
-    public ProductOptionsPO clickInfo(WebElement element) {
+    public ProductOptionsPO clickInfo() {
         info = new Button(element, ADDITIONAL_SERVICE_INFO).click();
         return this;
     }
