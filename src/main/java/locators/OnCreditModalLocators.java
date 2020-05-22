@@ -1,18 +1,30 @@
 package locators;
 
-public class OnCreditModalLocators {
+import org.openqa.selenium.By;
 
-    public static final String CLOSE_THE_MODAL = ".modal__close";
-    public static final String STANDARD_CREDIT_SELECT = "//*[contains (text(), 'Стандарт')]//following::div[1]//select";
-    public static final String STANDARD_CREDIT_BUTTON = "//*[contains (text(), 'Стандарт')]//following::div[2]//button";
-    public static final String ALPHA_CREDIT_SELECT = "//*[contains (text(), 'Альфа')]//following::div[1]//select";
-    public static final String ALPHA_CREDIT_BUTTON = "//*[contains (text(), 'Альфа')]//following::div[2]//button";
-    public static final String MONO_CREDIT_SELECT = "//*[contains (text(), 'monobank')]//following::div[1]//select";
-    public static final String MONO_CREDIT_BUTTON = "//*[contains (text(), 'monobank')]//following::div[2]//button";
-    public static final String THREE_MONTH_CONCES_SELECT = "//*[contains (text(), '0,01')][contains (text(), '3')]//following::div[1]//select";
-    public static final String THREE_MONTH_CONCES_BUTTON = "//*[contains (text(), '0,01')][contains (text(), '3')]//following::div[2]//button";
-    public static final String TEN_MONTH_CONCES_SELECT = "//*[contains (text(), '0,01')][contains (text(), '10')]//following::div[1]//select";
-    public static final String TEN_MONTH_CONCES_BUTTON = "//*[contains (text(), '0,01')][contains (text(), '10')]//following::div[2]//button";
-    public static final String PAY_IN_PARTS_SELECT = "//*[contains (text(), 'Оплата')]//following::div[1]//select";
-    public static final String PAY_IN_PARTS_BUTTON = "//*[contains (text(), 'Оплата')]//following::div[2]//button";
+public enum OnCreditModalLocators implements Locator {
+    CLOSE_THE_MODAL(By.cssSelector(".modal__close")),
+    STANDARD_CREDIT_SELECT(By.xpath("//*[contains (text(), 'Стандарт')]//following::div[1]//select")),
+    STANDARD_CREDIT_BUTTON(By.xpath("//*[contains (text(), 'Стандарт')]//following::div[2]//button")),
+    ALPHA_CREDIT_SELECT(By.xpath("//*[contains (text(), 'Альфа')]//following::div[1]//select")),
+    ALPHA_CREDIT_BUTTON(By.xpath("//*[contains (text(), 'Альфа')]//following::div[2]//button")),
+    MONO_CREDIT_SELECT(By.xpath("//*[contains (text(), 'monobank')]//following::div[1]//select")),
+    MONO_CREDIT_BUTTON(By.xpath("//*[contains (text(), 'monobank')]//following::div[2]//button")),
+    THREE_MONTH_CONCES_SELECT(By.xpath("//*[contains (text(), '0,01')][contains (text(), '3')]//following::div[1]//select")),
+    THREE_MONTH_CONCES_BUTTON(By.xpath("//*[contains (text(), '0,01')][contains (text(), '3')]//following::div[2]//button")),
+    TEN_MONTH_CONCES_SELECT(By.xpath("//*[contains (text(), '0,01')][contains (text(), '10')]//following::div[1]//select")),
+    TEN_MONTH_CONCES_BUTTON(By.xpath("//*[contains (text(), '0,01')][contains (text(), '10')]//following::div[2]//button")),
+    PAY_IN_PARTS_SELECT(By.xpath("//*[contains (text(), 'Оплата')]//following::div[1]//select")),
+    PAY_IN_PARTS_BUTTON(By.xpath("//*[contains (text(), 'Оплата')]//following::div[2]//button"));
+
+    @Override
+    public By getPath() {
+        return path;
+    }
+
+    private By path;
+    private OnCreditModalLocators(By path) {
+        this.path = path;
+    }
+
 }
