@@ -4,9 +4,8 @@ import org.openqa.selenium.WebDriver;
 
 import pageelements.HyperLink;
 
-
-
 import static locators.CharacteristicsLocators.*;
+
 
 public class CharacteristicsPageObject extends BasePageObject {
     private HyperLink screenSizeLink;

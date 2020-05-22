@@ -1,16 +1,18 @@
 package pageelements;
 
+import locators.Locator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Label extends BaseElement {
 
-    public Label(WebDriver driver, String xpath) {
-        super(driver, xpath);
+
+    public Label(WebDriver driver, Locator locator) {
+        super(driver, locator);
     }
 
-    public Label(WebElement elementToParse, String xpath) {
-        super(elementToParse, xpath);
+    public Label(WebElement elementToParse, Locator locator) {
+        super(elementToParse, locator);
     }
 
     public Label(WebElement element) {
