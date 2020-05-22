@@ -1,12 +1,12 @@
 package pageobjects;
 
-import locators.AllAboutProductLocators;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageelements.*;
 
 import java.util.List;
+
+import static locators.AllAboutProductLocators.*;
 
 public class AllAboutProductTabPO extends BasePageObject {
 
@@ -33,7 +33,7 @@ public class AllAboutProductTabPO extends BasePageObject {
      * @return list of all the available options to the product
      */
     public List<WebElement> createListOfProductOptions() {
-        prodOptionList = driver.findElements(By.xpath(AllAboutProductLocators.PRODUCT_OPTIONS));
+        prodOptionList = driver.findElements(PRODUCT_OPTIONS.getPath());
         return prodOptionList;
     }
 
@@ -41,18 +41,18 @@ public class AllAboutProductTabPO extends BasePageObject {
      * @return list of all the available additional services to the product
      */
     public List<WebElement> createListOfCervices() {
-        serviceList = driver.findElements(By.xpath(AllAboutProductLocators.ADDITIONAL_SERVICES_LIST));
+        serviceList = driver.findElements(ADDITIONAL_SERVICES_LIST.getPath());
         return serviceList;
     }
 
     public String getSellerName() {
-        sellerName = new TextField(driver, AllAboutProductLocators.SELLER_NAME).getText();
+        sellerName = new TextField(driver, SELLER_NAME).getText();
         return sellerName;
 
     }
 
     public String getSellerFeedback() {
-        sellerFeedback = new TextField(driver, AllAboutProductLocators.SELLER_FEEDBACK).getText();
+        sellerFeedback = new TextField(driver, SELLER_FEEDBACK).getText();
         return sellerFeedback;
 
     }
@@ -61,7 +61,7 @@ public class AllAboutProductTabPO extends BasePageObject {
      * @return list of all the picktograms which inform user about bonuses
      */
     private List<WebElement> createListOfBonusPicto() {
-        bonusPicktos = driver.findElements(By.xpath(AllAboutProductLocators.BONUS_PICTOGRAMS_LIST));
+        bonusPicktos = driver.findElements(BONUS_PICTOGRAMS_LIST.getPath());
         return bonusPicktos;
     }
 
@@ -72,7 +72,7 @@ public class AllAboutProductTabPO extends BasePageObject {
      * work in progress!
      */
     public AllAboutProductTabPO setDeliveryCity() {
-        chooseCity = new LinkedText(driver, AllAboutProductLocators.DELIVERY_CITY_MODAL).click();
+        chooseCity = new LinkedText(driver, DELIVERY_CITY_MODAL).click();
         return this;
     }
 
@@ -82,7 +82,7 @@ public class AllAboutProductTabPO extends BasePageObject {
      * @return AllAboutProductTabPageObject
      */
     public AllAboutProductTabPO goToPremiumDeliveryDetails() {
-        premiumDelivery = new LinkedButton(driver, AllAboutProductLocators.PREMIUM_DELIVERY_LINK).click();
+        premiumDelivery = new LinkedButton(driver, PREMIUM_DELIVERY_LINK).click();
         return this;
 
     }
@@ -91,18 +91,18 @@ public class AllAboutProductTabPO extends BasePageObject {
      * @return list of all the picktograms which inform user about bonuses
      */
     private List<WebElement> createListOfProductPicto() {
-        productPicktos = driver.findElements(By.xpath(AllAboutProductLocators.PRODUCT_PICTOGRAMS_LIST));
+        productPicktos = driver.findElements(PRODUCT_PICTOGRAMS_LIST.getPath());
         return productPicktos;
     }
 
     public String getProductBriefInfo() {
-        productBrief = new TextField(driver, AllAboutProductLocators.PRODUCT_INFO_BRIEF).getText();
+        productBrief = new TextField(driver, PRODUCT_INFO_BRIEF).getText();
         return productBrief;
 
     }
 
     public AllAboutProductTabPO goToDetailedInfo() {
-        detailedInfoLink = new LinkedText(driver, AllAboutProductLocators.DETAILED_PRODUCT_INFO_LINK).click();
+        detailedInfoLink = new LinkedText(driver, DETAILED_PRODUCT_INFO_LINK).click();
         return this;
 
     }

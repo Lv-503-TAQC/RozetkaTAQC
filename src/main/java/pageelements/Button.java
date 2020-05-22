@@ -1,17 +1,22 @@
 package pageelements;
 
+import locators.Locator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Button extends BaseElement {
 
-    public Button(WebDriver driver, String xpath) {
 
-        super(driver, xpath);
+    public Button(WebDriver driver, Locator locator) {
+        super(driver, locator);
     }
 
-    public Button(WebElement elementToParse, String xpath) {
-        super(elementToParse, xpath);
+    public Button(WebElement elementToParse, Locator locator) {
+        super(elementToParse, locator);
+    }
+
+    public Button(WebElement element) {
+        super(element);
     }
 
     public Button click() {

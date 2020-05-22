@@ -1,6 +1,5 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageelements.Button;
@@ -11,6 +10,7 @@ import java.util.List;
 
 import static locators.ProductReviewsLocators.*;
 import static locators.ProductTabsList.PRODUCT_REVIEW_TAB;
+
 
 public class ProductReviewPageObject extends BasePageObject {
     private Button addNewCommentBtn;
@@ -113,12 +113,12 @@ public class ProductReviewPageObject extends BasePageObject {
     }
 
     public ProductReviewPageObject commentComponent() {
-        commentComponentElement = driver.findElement(By.xpath(PRODUCT_REVIEW_COMMENT_COMPONENT));
+        commentComponentElement = driver.findElement(PRODUCT_REVIEW_COMMENT_COMPONENT.getPath());
         return this;
     }
 
     public ProductReviewPageObject replyComponentElement() {
-        replyComponentElement = driver.findElement(By.xpath(PRODUCT_REVIEW_REPLY_COMMENT));
+        replyComponentElement = driver.findElement(PRODUCT_REVIEW_REPLY_COMMENT.getPath());
         return this;
     }
 
@@ -128,17 +128,17 @@ public class ProductReviewPageObject extends BasePageObject {
     }
 
     private List<WebElement> findReviewMediaList() {
-        reviewMediaList = driver.findElements(By.xpath(PRODUCT_REVIEW_MEDIA_LIST));
+        reviewMediaList = driver.findElements(PRODUCT_REVIEW_MEDIA_LIST.getPath());
         return reviewMediaList;
     }
 
     private List<WebElement> commentComponentList() {
-        commentComponentList = driver.findElements(By.xpath(PRODUCT_REVIEW_COMMENTS_LIST));
+        commentComponentList = driver.findElements(PRODUCT_REVIEW_COMMENTS_LIST.getPath());
         return commentComponentList;
     }
 
     private List<WebElement> replyComponentList() {
-        replyComponentList = driver.findElements(By.xpath(PRODUCT_REVIEW_REPLY_COMMENTS_LIST));
+        replyComponentList = driver.findElements(PRODUCT_REVIEW_REPLY_COMMENTS_LIST.getPath());
         return replyComponentList;
     }
 

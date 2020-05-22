@@ -1,9 +1,10 @@
 package pageobjects;
 
-import locators.ActionsWithProductsLocators;
 import org.openqa.selenium.WebDriver;
 import pageelements.Button;
 import pageelements.TextField;
+
+import static locators.ActionsWithProductsLocators.*;
 
 public class ActionsWithProductsBlockPO extends BasePageObject{
 
@@ -18,29 +19,29 @@ public class ActionsWithProductsBlockPO extends BasePageObject{
     }
 
     public ActionsWithProductsBlockPO addToCart() {
-        addToCart = new Button(driver, ActionsWithProductsLocators.ADD_TO_CART_BUTTON).click();
+        addToCart = new Button(driver, ADD_TO_CART_BUTTON).click();
         return this;
     }
 
     public ActionsWithProductsBlockPO addToCompareList() {
-        addToCompareList = new Button(driver, ActionsWithProductsLocators.ADD_TO_COMPARE_LIST_BUTTON).click();
+        addToCompareList = new Button(driver, ADD_TO_COMPARE_LIST_BUTTON).click();
         return this;
     }
 
     public ActionsWithProductsBlockPO addToWishList() {
-        addToWishList = new Button(driver, ActionsWithProductsLocators.ADD_TO_WISH_LIST).click();
+        addToWishList = new Button(driver, ADD_TO_WISH_LIST).click();
         return this;
 
     }
 
     public String getCreditInfo(){
-        creditInfo = new TextField(driver,ActionsWithProductsLocators.CREDIT_INFO).getText();
+        creditInfo = new TextField(driver, CREDIT_INFO).getText();
         return creditInfo;
 
     }
 
     public ActionsWithProductsBlockPO setDeliveryCity() {
-        buyOnCredit = new Button(driver, ActionsWithProductsLocators.BUY_ON_CREDIT).click();
+        buyOnCredit = new Button(driver, BUY_ON_CREDIT).click();
         return this;
     }
 }
