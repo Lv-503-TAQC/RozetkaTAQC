@@ -26,7 +26,6 @@ public enum ProductReviewsLocators implements Locator {
 
     PRODUCT_REVIEW_SHOW_MORE_COMMENTS(By.xpath("//*[@class = 'button button_size_medium product-comments__show-more']"));
 
-
     @Override
     public By getPath() {
         return path;
@@ -36,5 +35,4 @@ public enum ProductReviewsLocators implements Locator {
     private ProductReviewsLocators(By path) {
         this.path = path;
     }
-
 }
