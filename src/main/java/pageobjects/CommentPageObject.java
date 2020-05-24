@@ -1,6 +1,6 @@
 package pageobjects;
 
-import locators.ProductReviewsLocators;
+import locators.CommentLocators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageelements.Button;
@@ -21,7 +21,7 @@ public class CommentPageObject extends BasePageObject {
     private Button replyToCommentBtn;
     private Button goToCommentLBtn;
 
-    private List<RepliesToCommentPageObject> repliesCommentList;
+    private List<ReplyToCommentPageObject> repliesToCommentList;
 
     public CommentPageObject(WebDriver driver) {
         super(driver);
@@ -32,56 +32,63 @@ public class CommentPageObject extends BasePageObject {
         this.element = element;
     }
 
+    public SingleCommentPageObject goToCommentPage() {
+        goToCommentLBtn = new Button(driver, CommentLocators.GO_TO_COMMENT_BUTTON);
+        goToCommentLBtn.click();
+
+        return new SingleCommentPageObject(driver);
+    }
+
     public Label getCommentAuthor() {
-        commentAuthorLbl = new Label(element, ProductReviewsLocators.COMMENT_AUTHOR);
+        commentAuthorLbl = new Label(element, CommentLocators.COMMENT_AUTHOR);
 
         return commentAuthorLbl;
     }
 
     public Label getCommentDate() {
-        commentDateLbl = new Label(element, ProductReviewsLocators.COMMENT_DATE);
+        commentDateLbl = new Label(element, CommentLocators.COMMENT_DATE);
 
         return commentDateLbl;
     }
 
     public Label getCommentBody() {
-        commentBodyLbl = new Label(element, ProductReviewsLocators.COMMENT_BODY);
+        commentBodyLbl = new Label(element, CommentLocators.COMMENT_BODY);
 
         return commentBodyLbl;
     }
 
     public ComplainPopupDialogPageObject complainToComment() {
-        complainToCommentBtn = new Button(element, ProductReviewsLocators.COMPLAIN_TO_COMMENT);
+        complainToCommentBtn = new Button(element, CommentLocators.COMPLAIN_TO_COMMENT);
         complainToCommentBtn.click();
 
         return new ComplainPopupDialogPageObject(driver);
     }
 
     public ReplyPopupDialogPageObject replyToComment() {
-        replyToCommentBtn = new Button(element, ProductReviewsLocators.REPLY_TO_COMMENT_BUTTON);
+        replyToCommentBtn = new Button(element, CommentLocators.REPLY_TO_COMMENT_BUTTON);
         replyToCommentBtn.click();
 
         return new ReplyPopupDialogPageObject(driver);
     }
 
     public CommentPageObject likeToComment() {
-        likeToCommentBtn = new Button(element, ProductReviewsLocators.LIKE_COMMENT);
+        likeToCommentBtn = new Button(element, CommentLocators.LIKE_COMMENT);
         likeToCommentBtn.click();
 
         return this;
     }
 
     public CommentPageObject dislikeToComment() {
-        dislikeToCommentBtn = new Button(element, ProductReviewsLocators.DISLIKE_COMMENT);
+        dislikeToCommentBtn = new Button(element, CommentLocators.DISLIKE_COMMENT);
         dislikeToCommentBtn.click();
 
         return this;
     }
 
-    public CommentPageObject goToComment() {
-        goToCommentLBtn = new Button(element, ProductReviewsLocators.GO_TO_COMMENT_BUTTON);
+    public SingleCommentPageObject goToSingleCommentPage() {
+        goToCommentLBtn = new Button(element, CommentLocators.GO_TO_COMMENT_BUTTON);
         goToCommentLBtn.click();
 
-        return new CommentPageObject(driver, element);
+        return new SingleCommentPageObject(driver);
     }
 }
