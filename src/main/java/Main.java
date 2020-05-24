@@ -1,8 +1,6 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageobjects.CommentPageObject;
-import pageobjects.ProductReviewPageObject;
+import pageobjects.ProductCommentsPageObject;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,20 +23,16 @@ public class Main {
 
             driver.findElement(PRODUCT_REVIEW_TAB.getPath()).click();
             Thread.sleep(2000);
+            
+            ProductCommentsPageObject productReviewPageObject = new ProductCommentsPageObject(driver);
+            productReviewPageObject
+                    .getComments()
+                    .get(5)
+                    .goToSingleCommentPage()
+                    .getComment()
+                    .replyToComment();
 
-            boolean displayed = driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).isDisplayed();
-            if (displayed) {
-                driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).click();
-                Thread.sleep(2000);
-            }
-
-            ProductReviewPageObject productReviewPageObject = new ProductReviewPageObject(driver);
-            CommentPageObject commentPageObject = productReviewPageObject.getComments().get(1);
-            String commentAuthor = commentPageObject.getCommentAuthor().getText();
-            String commentBody = commentPageObject.getCommentBody().getText();
-
-            System.out.println(commentAuthor);
-            System.out.println(commentBody);
+            Thread.sleep(2000);
 
 
         } finally {
