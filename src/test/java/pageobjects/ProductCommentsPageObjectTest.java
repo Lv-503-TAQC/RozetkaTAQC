@@ -23,7 +23,7 @@ public class ProductCommentsPageObjectTest {
     }
 
     @BeforeMethod
-    public void getForgottenPassword() {
+    public void getProductComment() {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(PRODUCT_COMMENT_PAGE);
