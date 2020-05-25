@@ -12,11 +12,12 @@ public enum ProductServicesLocators implements Locator {
 
     @Override
     public By getPath() {
+
         return path;
     }
 
     private By path;
-    private ProductServicesLocators(By path) {
+    ProductServicesLocators(By path) {
         this.path = path;
     }
 
