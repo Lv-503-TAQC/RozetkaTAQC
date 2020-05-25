@@ -11,6 +11,7 @@ import java.util.List;
 
 public class AllAboutProductTabPO extends BasePageObject {
 
+    private String prodPrice;
     private List<WebElement> prodOptionList;
     private List<ProductOptionsPO> serviceList;
     private WebElement serviceDropdown;
@@ -30,6 +31,10 @@ public class AllAboutProductTabPO extends BasePageObject {
         super(driver);
     }
 
+    public String getProdPrice(){
+        prodPrice = new TextField(driver, AllAboutProductLocators.PRODUCT_PRICE).getText();
+        return prodPrice;
+    }
     /**
      * @return list of all the available options to the product
      */
@@ -84,7 +89,6 @@ public class AllAboutProductTabPO extends BasePageObject {
 
     /**
      * go to the page with all the details about Premium delivery
-     *
      * @return AllAboutProductTabPageObject
      */
     public AllAboutProductTabPO goToPremiumDeliveryDetails() {

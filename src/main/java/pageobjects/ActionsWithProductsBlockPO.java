@@ -13,13 +13,14 @@ public class ActionsWithProductsBlockPO extends BasePageObject{
     private Button addToWishList;
     private String creditInfo;
     private Button buyOnCredit;
+    private Button isAddedToCart;
 
     public ActionsWithProductsBlockPO(WebDriver driver) {
         super(driver);
     }
 
     public ActionsWithProductsBlockPO addToCart() {
-        addToCart = new Button(driver, ADD_TO_CART_BUTTON).click();
+        addToCart = new Button(driver, ADD_TO_CART_BTN).click();
         return this;
     }
 
@@ -42,6 +43,10 @@ public class ActionsWithProductsBlockPO extends BasePageObject{
 
     public ActionsWithProductsBlockPO setDeliveryCity() {
         buyOnCredit = new Button(driver, BUY_ON_CREDIT).click();
+        return this;
+    }
+    public ActionsWithProductsBlockPO isAddedToCart(){
+        isAddedToCart = new Button(driver, ADDED_TO_CART_BTN).isDisplayed();
         return this;
     }
 }

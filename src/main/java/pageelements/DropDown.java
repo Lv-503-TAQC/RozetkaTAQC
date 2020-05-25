@@ -17,7 +17,9 @@ public class DropDown extends BaseElement {
     }
 
     public DropDown(WebElement elementToParse, Locator locator) {
+
         super(elementToParse, locator);
+
     }
 
     public DropDown(WebElement element) {
@@ -26,11 +28,12 @@ public class DropDown extends BaseElement {
 
 
     public Select getSelect() {
-        return select;
+        Select s =new Select(element);
+        return s;
     }
 
-    public List<WebElement> getOptions(DropDown dropdownToParse) {
+    public List<WebElement> getOptions() {
 
-        return this.select.getAllSelectedOptions();
+        return this.getOptions();
     }
 }

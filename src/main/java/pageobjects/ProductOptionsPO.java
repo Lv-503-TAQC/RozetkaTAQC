@@ -3,6 +3,7 @@ package pageobjects;
 import locators.ProductServicesLocators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import pageelements.Button;
 import pageelements.Checkbox;
 import pageelements.DropDown;
@@ -16,7 +17,7 @@ public class ProductOptionsPO extends BasePageObject {
 
     private WebElement element;
 
-    private DropDown prodOptionDropdown;
+    private Select prodOptionDropdown;
     private Checkbox prodOptionCheckbox;
     private String checkboxValue;
     private String price;
@@ -38,11 +39,10 @@ public class ProductOptionsPO extends BasePageObject {
      * Method finds the dropdown element in product service item.
      * Method which finds the list of all product service items available
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
-     * @param element - desirable service item.
      * @return the dropdown element.
      */
-    public DropDown getDropdown(WebElement element) {
-        prodOptionDropdown = new DropDown(element, ADDITIONAL_SERVICE_DROPDOWN);
+    public Select getDropdown() {
+        prodOptionDropdown = new DropDown(element, ADDITIONAL_SERVICE_DROPDOWN).getSelect();
         return prodOptionDropdown;
     }
 
@@ -50,11 +50,10 @@ public class ProductOptionsPO extends BasePageObject {
      * Method finds the options of the dropdown element.
      * Method which finds the dropdown is above
      * (see getDropdown()).
-     * @param dropDown - desirable service item.
      * @return the dropdown element.
      */
-    public List<WebElement> getOptions (DropDown dropDown) {
-        dropdOptions = dropDown.getOptions(dropDown);
+    public List<WebElement> getOptions () {
+        dropdOptions = this.getOptions();
         return dropdOptions;
     }
 
