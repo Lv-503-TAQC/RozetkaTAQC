@@ -3,8 +3,8 @@ package locators;
 import org.openqa.selenium.By;
 
 public enum CartModalWindowLocators implements Locator {
-    PRODUCT_PRICE_MODAL(By.xpath("//li[@class='cart-modal__item']//*[@class='cart-modal__sum']//span[@class='cart-modal__coast-digits']")),
-    CART_TOTAL_MODAL(By.cssSelector(".cart-modal__check-digits"));
+    CART_TOTAL_MODAL(By.cssSelector(".cart-modal__check-digits")),
+    PRODUCT_IN_CART(By.xpath("//li[@class='cart-modal__item']"));
 
 
     @Override

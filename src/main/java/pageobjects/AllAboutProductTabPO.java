@@ -7,14 +7,16 @@ import pageelements.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static locators.ProductServicesLocators.ADDITIONAL_SERVICE_PRICE;
 
 
 public class AllAboutProductTabPO extends BasePageObject {
 
-    private String prodPrice;
+
     private List<WebElement> prodOptionList;
-    private List<ProductOptionsPO> serviceList;
-    private WebElement serviceDropdown;
     private String sellerName;
     private String sellerFeedback;
     private List<WebElement> bonusPicktos;
@@ -31,10 +33,12 @@ public class AllAboutProductTabPO extends BasePageObject {
         super(driver);
     }
 
-    public String getProdPrice(){
-        prodPrice = new TextField(driver, AllAboutProductLocators.PRODUCT_PRICE).getText();
-        return prodPrice;
+    public ActionsWithProductsBlockPO getProducActionsBlock() {
+
+        return new ActionsWithProductsBlockPO(driver);
     }
+
+
     /**
      * @return list of all the available options to the product
      */
@@ -44,16 +48,11 @@ public class AllAboutProductTabPO extends BasePageObject {
     }
 
     /**
-     * @return list of all the available additional services to the product
+     * @return ProductServicesBlockPO  - page object, which contains list of all product services
      */
-    public List<ProductOptionsPO> createListOfCervices() {
-        serviceList = new ArrayList<ProductOptionsPO>();
+    public ProductServicesBlockPO getProductServicesBlock() {
 
-        List<WebElement> listOfServices = driver.findElements(AllAboutProductLocators.ADDITIONAL_SERVICES_LIST.getPath());
-        for (WebElement listItem : listOfServices) {
-            serviceList.add(new ProductOptionsPO(driver, listItem));
-        }
-        return serviceList;
+        return new ProductServicesBlockPO(driver);
     }
 
     public String getSellerName() {

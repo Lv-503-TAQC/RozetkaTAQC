@@ -1,6 +1,5 @@
 package pageobjects;
 
-import locators.ProductServicesLocators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -10,27 +9,29 @@ import pageelements.DropDown;
 import pageelements.TextField;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static locators.ProductServicesLocators.*;
 
-public class ProductOptionsPO extends BasePageObject {
+public class ProductServiceOptionsPO extends BasePageObject {
 
     private WebElement element;
 
     private Select prodOptionDropdown;
     private Checkbox prodOptionCheckbox;
     private String checkboxValue;
-    private String price;
+    private int price;
     private Button info;
     private List<WebElement> dropdOptions;
 
 
-    public ProductOptionsPO(WebDriver driver) {
+    public ProductServiceOptionsPO(WebDriver driver) {
 
         super(driver);
     }
 
-    public ProductOptionsPO(WebDriver driver, WebElement element) {
+    public ProductServiceOptionsPO(WebDriver driver, WebElement element) {
         super(driver);
         this.element = element;
     }
@@ -41,9 +42,9 @@ public class ProductOptionsPO extends BasePageObject {
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
      * @return the dropdown element.
      */
-    public Select getDropdown() {
+    public ProductServiceOptionsPO getDropdown() {
         prodOptionDropdown = new DropDown(element, ADDITIONAL_SERVICE_DROPDOWN).getSelect();
-        return prodOptionDropdown;
+        return this;
     }
 
     /**
@@ -62,9 +63,9 @@ public class ProductOptionsPO extends BasePageObject {
      * Method which gets the options is above
      * (see getOptions()).
      * @param option - desirable dropdown option.
-     * @return the ProductOptionsPO object.
+     * @return the ProductServiceOptionsPO object.
      */
-    public ProductOptionsPO readOption (WebElement option) {
+    public ProductServiceOptionsPO readOption (WebElement option) {
         option.getText();
         return this;
     }
@@ -73,11 +74,10 @@ public class ProductOptionsPO extends BasePageObject {
      * Method selects the options of the dropdown element.
      * Method which gets the options is above
      * (see getOptions()).
-     * @param option - desirable dropdown option.
-     * @return the ProductOptionsPO object.
+     * @return the ProductServiceOptionsPO object.
      */
-    public ProductOptionsPO selectOption (WebElement option) {
-        option.click();
+   public ProductServiceOptionsPO selectOptionByIndex(int i) {
+       prodOptionDropdown.selectByIndex(i);
         return this;
     }
 
@@ -98,7 +98,7 @@ public class ProductOptionsPO extends BasePageObject {
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
      * @return the dropdown element.
      */
-    public ProductOptionsPO clickCheckbox() {
+    public ProductServiceOptionsPO clickCheckbox() {
         prodOptionCheckbox = new Checkbox(element, ADDITIONAL_SERVICE_CHECKBOX).click();
         return this;
     }
@@ -109,8 +109,18 @@ public class ProductOptionsPO extends BasePageObject {
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
      * @return String with a price.
      */
-    public String getPrice() {
-        price = new TextField(element, ADDITIONAL_SERVICE_PRICE).getText();
+    public int getPrice() {
+       String priceString = new TextField(element, ADDITIONAL_SERVICE_PRICE).getText();
+        String regex = "[\\d\\s]+";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(priceString);
+
+        if (m.find()) {
+            String substring = priceString.substring(m.start(), m.end());
+            substring = substring.trim();
+            substring = substring.replace(" ", "");
+            price = Integer.parseInt(substring);
+                    }
         return price;
     }
 
@@ -118,9 +128,9 @@ public class ProductOptionsPO extends BasePageObject {
      * Method finds the info button element in product service item.
      * Method which finds the list of all product service items available
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
-     * @return ProductOptionsPO object.
+     * @return ProductServiceOptionsPO object.
      */
-    public ProductOptionsPO clickInfo() {
+    public ProductServiceOptionsPO clickInfo() {
         info = new Button(element, ADDITIONAL_SERVICE_INFO).click();
         return this;
     }

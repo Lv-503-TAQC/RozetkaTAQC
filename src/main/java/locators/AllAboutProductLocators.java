@@ -3,7 +3,6 @@ package locators;
 import org.openqa.selenium.By;
 
 public enum AllAboutProductLocators implements Locator {
-    PRODUCT_PRICE(By.cssSelector("[class*='product-prices__big']")),
     PRODUCT_OPTIONS(By.xpath("//*[@class = 'product-main__parameters']//li")),
     IN_STOCK_STRING(By.xpath("//*[contains (@class,'product__status')]")),
     NOTIF_WHEN_IN_STOCK_BTN(By.xpath("//*[@class = 'product-statuses']//button")),
