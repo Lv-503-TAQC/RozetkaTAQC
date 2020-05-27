@@ -11,7 +11,7 @@ public enum ProductReviewsLocators implements Locator {
     TAB_COUNTER(By.xpath("//*[@class = 'product-tabs__link-text']")),
     HEADER(By.xpath("//*[@class = 'product-tabs__heading']")),
     HEADER_COUNTER(By.xpath("//*[@class = 'product-tabs__heading_color_gray']")),
-    SORTING(By.xpath("//*[@class = 'ng-untouched ng-pristine ng-valid']"));
+    SORTING(By.xpath("//*[@id = 'comments-sort-select']"));
 
     @Override
     public By getPath() {
