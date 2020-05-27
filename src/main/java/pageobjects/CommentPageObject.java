@@ -33,10 +33,9 @@ public class CommentPageObject extends BasePageObject {
     }
 
     public boolean isAlreadyBuy() {
-        WebElement element = driver.findElement(CommentLocators.ALREADY_BUY.getPath());
-        element.isDisplayed();
+        WebElement alreadyBuyIcon = element.findElement(CommentLocators.ALREADY_BUY.getPath());
 
-        return element.isDisplayed();
+        return alreadyBuyIcon.isDisplayed();
     }
 
     public SingleCommentPageObject goToCommentPage() {
