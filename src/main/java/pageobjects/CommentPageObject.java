@@ -32,6 +32,13 @@ public class CommentPageObject extends BasePageObject {
         this.element = element;
     }
 
+    public boolean isAlreadyBuy() {
+        WebElement element = driver.findElement(CommentLocators.ALREADY_BUY.getPath());
+        element.isDisplayed();
+
+        return element.isDisplayed();
+    }
+
     public SingleCommentPageObject goToCommentPage() {
         goToCommentLBtn = new Button(driver, CommentLocators.GO_TO_COMMENT_BUTTON);
         goToCommentLBtn.click();

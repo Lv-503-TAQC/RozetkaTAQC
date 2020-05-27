@@ -25,15 +25,11 @@ public class Main {
             Thread.sleep(2000);
             
             ProductCommentsPageObject productReviewPageObject = new ProductCommentsPageObject(driver);
-            productReviewPageObject
-                    .getComments()
-                    .get(5)
-                    .goToSingleCommentPage()
-                    .getComment()
-                    .replyToComment();
-
+            productReviewPageObject.sortByAlreadyBuy();
             Thread.sleep(2000);
 
+            System.out.println(productReviewPageObject.getComments().get(0).getCommentBody().getText());
+            Thread.sleep(2000);
 
         } finally {
             driver.quit();
