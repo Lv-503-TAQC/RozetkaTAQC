@@ -1,24 +1,22 @@
 package pageobjects;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.Base;
 
-import static utils.Constants.*;
+import java.io.IOException;
 
-public class ProductCommentsPageObjectTest {
-    WebDriver driver;
+import static utils.Constants.PRODUCT_COMMENT_PAGE;
+
+public class ProductCommentsPageObjectTest extends Base {
     ProductCommentsPageObject productCommentsPageObject;
 
     @BeforeClass
-    public void setUp() {
-        System.setProperty(KEY_TO_WINDOWS_CHROME_DRIVER, PATH_TO_WINDOWS_CHROME_DRIVER);
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    public void setUp() throws IOException {
+        driver = initializeDriver();
     }
 
     @AfterClass
@@ -40,5 +38,15 @@ public class ProductCommentsPageObjectTest {
                 .getCommentBody()
                 .getText();
         Assert.assertEquals(actual, "Подойдёт для 2D дизайна?");
+    }
+
+    @Test
+    public void commentsSorting() {
+        boolean alreadyBuy = productCommentsPageObject
+                .sortByAlreadyBuy()
+                .getComments()
+                .get(0)
+                .isAlreadyBuy();
+        Assert.assertEquals(alreadyBuy, true);
     }
 }

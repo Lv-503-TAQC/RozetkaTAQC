@@ -5,12 +5,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utils.base;
+import utils.Base;
 
 import java.io.IOException;
 
 
-public class AddToBasketAndRemoveTest extends base {
+public class AddToBasketAndRemoveTest extends Base {
     WebDriver driver;
     AllAboutProductTabPO allAboutProductTab;
     ActionsWithProductsBlockPO actionsWithProductsBlockPO;
