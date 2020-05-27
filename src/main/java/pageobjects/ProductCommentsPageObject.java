@@ -30,8 +30,9 @@ public class ProductCommentsPageObject extends BasePageObject {
         super(driver);
     }
 
-    public ProductCommentsPageObject sortBy() {
+    public ProductCommentsPageObject sortByAlreadyBuy() {
         sortCommentsDd = new DropDown(driver, ProductReviewsLocators.SORTING);
+        sortCommentsDd.getSelect().getOptions().get(2).click();
 
         return this;
     }
