@@ -14,7 +14,6 @@ public class DropDown extends BaseElement {
 
     public DropDown(WebDriver driver, Locator locator) {
         super(driver, locator);
-
         select = new Select(driver.findElement(locator.getPath()));
     }
 

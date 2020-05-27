@@ -1,12 +1,18 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import pageobjects.ProductCommentsPageObject;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pageobjects.ActionsWithProductsBlockPO;
+import pageobjects.CartModalWindowPO;
+import pageobjects.ProductInCartPO;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static locators.ProductTabsList.PRODUCT_REVIEW_TAB;
-import static utils.Constants.KEY_TO_WINDOWS_CHROME_DRIVER;
-import static utils.Constants.PATH_TO_WINDOWS_CHROME_DRIVER;
+
+import static utils.Constants.*;
 
 public class Main {
     public static final String POPUP_BANNER_CLOSE_BUTTON = "//*[@class = 'exponea-close-cross']";
@@ -21,15 +27,13 @@ public class Main {
         try {
             driver.get("https://rozetka.com.ua/ua/apple_macbook_air_2020_256_space_gray/p197128590/");
 
-            driver.findElement(PRODUCT_REVIEW_TAB.getPath()).click();
-            Thread.sleep(2000);
-            
-            ProductCommentsPageObject productReviewPageObject = new ProductCommentsPageObject(driver);
-            productReviewPageObject.sortByAlreadyBuy();
-            Thread.sleep(2000);
+            boolean displayed = driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).isDisplayed();
+            if (displayed) {
+                driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).click();
+                Thread.sleep(2000);
+            }
 
-            System.out.println(productReviewPageObject.getComments().get(0).getCommentBody().getText());
-            Thread.sleep(2000);
+
 
         } finally {
             driver.quit();
