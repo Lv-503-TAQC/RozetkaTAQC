@@ -5,13 +5,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.Base;
+import utils.DriverManager;
 
 import java.io.IOException;
 
 import static utils.Constants.PRODUCT_COMMENT_PAGE;
 
-public class ProductCommentsPageObjectTest extends Base {
+public class ProductCommentsPageObjectTest extends DriverManager {
     ProductCommentsPageObject productCommentsPageObject;
 
     @BeforeClass
@@ -34,10 +34,10 @@ public class ProductCommentsPageObjectTest extends Base {
     public void commentBody() {
         String actual = productCommentsPageObject
                 .getComments()
-                .get(3)
+                .get(0)
                 .getCommentBody()
                 .getText();
-        Assert.assertEquals(actual, "Подойдёт для 2D дизайна?");
+        Assert.assertEquals(actual, " ");
     }
 
     @Test
