@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name = "testCaseName" value = "selectServiceOpt2"/>
+    <test verbose="2" preserve-order="true" name="C:/Users/LiubaIlchenko/GITCl/RozetkaTAQC">
+        <classes>
+            <class name="pageobjects.ProductCommentsPageObjectTest">
+                <methods>
+                    <include name="commentBody"/>
+                </methods>
+            </class>
+            <class name="pageobjects.SelectServiceOptionAndCheckPrice">
+            <methods>
+                <include name="selectServiceOpt2"/>
+                <include name="selectServiceOpt1"/>
+            </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
