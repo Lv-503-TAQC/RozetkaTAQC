@@ -66,8 +66,9 @@ public class SelectServiceOptionAndCheckPrice extends base {
     }
 
     @DataProvider
-//    @Parameters ({"testCaseName"}) "selectServiceOpt2"
-    public Object[] xlsData(String testCaseName) throws IOException {
+    // @Parameters ({"testCaseName"})
+    // "selectServiceOpt2"
+    public Object[] xlsData() throws IOException {
         DataFromXls xslObj = new DataFromXls();
         ArrayList<String> data = xslObj.getData("selectServiceOpt2");
         Object[][] returnArray = new Object[1][3];
@@ -106,6 +107,7 @@ public class SelectServiceOptionAndCheckPrice extends base {
 
         Assert.assertEquals(servicePrice+prodPriceModal, totalPriceModal);
     }
+
 
     @AfterClass
     public void closeUp() {
