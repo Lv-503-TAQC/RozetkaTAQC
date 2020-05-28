@@ -12,13 +12,12 @@ import java.util.concurrent.TimeUnit;
 
 import static utils.Constants.*;
 
-public class Base {
+public abstract class DriverManager {
     public WebDriver driver;
 
-    public WebDriver initializeDriver() throws IOException {
-        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/resources/data.properties");
-
+    public WebDriver initializeDriver() {
         try {
+            FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/resources/data.properties");
             Properties prop = new Properties();
             prop.load(fis);
 
@@ -58,9 +57,10 @@ public class Base {
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             driver.manage().window().maximize();
 
-            return driver;
-        } finally {
-            fis.close();
+        } catch (IOException e) {
+            e.getMessage();
         }
+
+        return driver;
     }
 }
