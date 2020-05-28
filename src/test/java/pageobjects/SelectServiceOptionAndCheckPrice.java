@@ -3,15 +3,19 @@ package pageobjects;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import utils.Constants;
 import utils.DataFromXls;
 import utils.base;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 
-public class AddToBasketAndRemoveTest extends base {
+public class SelectServiceOptionAndCheckPrice extends base {
     WebDriver driver;
     AllAboutProductTabPO allAboutProductTab;
     ActionsWithProductsBlockPO actionsWithProductsBlockPO;
@@ -19,10 +23,20 @@ public class AddToBasketAndRemoveTest extends base {
     @BeforeClass
     public void setUp() throws IOException {
         driver = initializeDriver();
-        driver.get("https://rozetka.com.ua/apple_macbook_air_2020_256_space_gray/p197128590/");
+        driver.get(Constants.PRODUCT_MAIN_PAGE);
         allAboutProductTab = new AllAboutProductTabPO(driver);
         actionsWithProductsBlockPO = new ActionsWithProductsBlockPO(driver);
     }
+
+//    @BeforeMethod
+//    public String getTestCaseName() throws IOException {
+//        prop= new Properties();
+//        FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\data.properties");
+//        prop.load(fis);
+//
+//        String testCaseName=prop.getProperty("testCaseName");
+//        return testCaseName;
+//    }
 
     @Test(dataProvider = "xlsData")
     public void selectServiceOpt2(String servicePriceExpected,String prodPriceModalExpected,String totalPriceModalExpected) {
@@ -52,7 +66,8 @@ public class AddToBasketAndRemoveTest extends base {
     }
 
     @DataProvider
-    public Object[] xlsData() throws IOException {
+//    @Parameters ({"testCaseName"}) "selectServiceOpt2"
+    public Object[] xlsData(String testCaseName) throws IOException {
         DataFromXls xslObj = new DataFromXls();
         ArrayList<String> data = xslObj.getData("selectServiceOpt2");
         Object[][] returnArray = new Object[1][3];

@@ -16,55 +16,44 @@ public class DataFromXls {
 
     public ArrayList<String> getData(String testCaseName) throws IOException {
         //create an array in which we are going to put test data from xls
-        ArrayList<String> dataList =new ArrayList<String>();
+        ArrayList<String> dataList = new ArrayList<String>();
 
         //point out the location of the xls file and initialize it as a  XSSFWorkbook
-        FileInputStream fis = new FileInputStream("D:\\Data.xlsx");
-        XSSFWorkbook workbook=new XSSFWorkbook(fis);
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\Data.xlsx");//ToDo to constants
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
         //find the number of sheets and iterate through them to get the needed one
         int sheets = workbook.getNumberOfSheets();
-        for(int i = 0;i < sheets; i++)
-        {
-            String name  = workbook.getSheetName(i);
-            if(workbook.getSheetName(i).equalsIgnoreCase("AddProdToCart"))
-            {
-                XSSFSheet sheet=workbook.getSheetAt(i);
-
+        for (int i = 0; i < sheets; i++) {
+            String name = workbook.getSheetName(i);
+            if (workbook.getSheetName(i).equalsIgnoreCase("AddProdToCart")) {
+                XSSFSheet sheet = workbook.getSheetAt(i);
                 //the needed sheet found, now we are creating iterator to move through rows
                 Iterator<Row> rows = sheet.iterator();// sheet is collection of rows
-                Row firstrow = rows.next();//?????
 
-                while(rows.hasNext())
-                {
-                    Row r = rows.next();
+                Row firstrow = rows.next();
+                int column = 0;
 
-                    if(r.getCell(0).getStringCellValue().equalsIgnoreCase(testCaseName))//???????
-                    {
-////after you grab purchase testcase row = pull all the data of that row and feed into test
-                        Iterator<Cell>  cv = r.cellIterator();
-                        Cell firstcell = cv.next();//?????
+                if (firstrow.getCell(column).getStringCellValue().equalsIgnoreCase(testCaseName)) {
 
-                        while(cv.hasNext())
-                        {
-                            Cell c = cv.next();
-                            if(c.getCellType()== CellType.STRING)
-                            {
+                    while (rows.hasNext()) {
+                        Cell c = rows.next().getCell(column);
 
-                                dataList.add(c.getStringCellValue());
-                            }
-                            else{
+                        if (c.getCellType() == CellType.STRING) {
 
-                                dataList.add(NumberToTextConverter.toText(c.getNumericCellValue()));
+                            dataList.add(c.getStringCellValue());
+                        } else {
 
-                            }
+                            dataList.add(NumberToTextConverter.toText(c.getNumericCellValue()));
+
                         }
                     }
+                    column++;
                 }
             }
         }
-
         return dataList;
-
     }
+
 }
+
