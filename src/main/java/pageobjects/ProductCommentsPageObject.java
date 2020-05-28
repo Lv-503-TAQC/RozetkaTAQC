@@ -1,6 +1,6 @@
 package pageobjects;
 
-import locators.ProductReviewsLocators;
+import locators.ProductCommentsLocators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageelements.Button;
@@ -31,53 +31,53 @@ public class ProductCommentsPageObject extends BasePageObject {
     }
 
     public ProductCommentsPageObject sortByAlreadyBuy() {
-        sortCommentsDd = new DropDown(driver, ProductReviewsLocators.SORTING);
+        sortCommentsDd = new DropDown(driver, ProductCommentsLocators.SORTING);
         sortCommentsDd.getSelect().getOptions().get(2).click();
 
         return this;
     }
 
     public ProductCommentsPageObject reviewTab() {
-        reviewTabBtn = new LinkedButton(driver, ProductReviewsLocators.REVIEW_TAB);
+        reviewTabBtn = new LinkedButton(driver, ProductCommentsLocators.REVIEW_TAB);
         reviewTabBtn.click();
 
         return this;
     }
 
     public ProductCommentsPageObject getReviewTabCounter() {
-        tabCounterLbl = new Label(driver, ProductReviewsLocators.TAB_COUNTER);
+        tabCounterLbl = new Label(driver, ProductCommentsLocators.TAB_COUNTER);
 
         return this;
     }
 
     public ProductCommentsPageObject getHeader() {
-        headerLbl = new Label(driver, ProductReviewsLocators.HEADER);
+        headerLbl = new Label(driver, ProductCommentsLocators.HEADER);
 
         return this;
     }
 
     public ProductCommentsPageObject getHeaderCounter() {
-        headerCounterLbl = new Label(driver, ProductReviewsLocators.HEADER);
+        headerCounterLbl = new Label(driver, ProductCommentsLocators.HEADER);
 
         return this;
     }
 
     public NewCommentPopupDialogPageObject addNewComment() {
-        addNewCommentBtn = new Button(driver, ProductReviewsLocators.NEW_COMMENT);
+        addNewCommentBtn = new Button(driver, ProductCommentsLocators.NEW_COMMENT);
         addNewCommentBtn.click();
 
         return new NewCommentPopupDialogPageObject(driver);
     }
 
     public ProductCommentsPageObject showMoreComments() {
-        showMoreCommentsBtn = new Button(driver, ProductReviewsLocators.SHOW_MORE_COMMENTS);
+        showMoreCommentsBtn = new Button(driver, ProductCommentsLocators.SHOW_MORE_COMMENTS);
         showMoreCommentsBtn.click();
 
         return this;
     }
 
     private List<WebElement> getMediaList() {
-        reviewMediaList = driver.findElements(ProductReviewsLocators.REVIEW_MEDIA_LIST.getPath());
+        reviewMediaList = driver.findElements(ProductCommentsLocators.REVIEW_MEDIA_LIST.getPath());
 
         return reviewMediaList;
     }
@@ -85,7 +85,7 @@ public class ProductCommentsPageObject extends BasePageObject {
     public List<CommentPageObject> getComments() {
         List<CommentPageObject> commentsList = new ArrayList<CommentPageObject>();
 
-        List<WebElement> comments = driver.findElements(ProductReviewsLocators.COMMENTS_LIST.getPath());
+        List<WebElement> comments = driver.findElements(ProductCommentsLocators.COMMENTS_LIST.getPath());
         for (WebElement comment : comments) {
             commentsList.add(new CommentPageObject(driver, comment));
         }

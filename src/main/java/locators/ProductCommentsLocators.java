@@ -2,7 +2,7 @@ package locators;
 
 import org.openqa.selenium.By;
 
-public enum ProductReviewsLocators implements Locator {
+public enum ProductCommentsLocators implements Locator {
     COMMENTS_LIST(By.xpath("//*[@class = 'product-comments__list-item']")),
     REVIEW_MEDIA_LIST(By.xpath("//*[@class = 'product-comments__photos-item']")),
     NEW_COMMENT(By.xpath("//*[@class = 'button button_color_navy button_size_medium']")),
@@ -19,7 +19,7 @@ public enum ProductReviewsLocators implements Locator {
     }
 
     private By path;
-    ProductReviewsLocators(By path) {
+    ProductCommentsLocators(By path) {
         this.path = path;
     }
 }
