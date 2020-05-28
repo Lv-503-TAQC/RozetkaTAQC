@@ -70,7 +70,7 @@ public class SelectServiceOptionAndCheckPrice extends base {
     // "selectServiceOpt2"
     public Object[] xlsData() throws IOException {
         DataFromXls xslObj = new DataFromXls();
-        ArrayList<String> data = xslObj.getData("selectServiceOpt2");
+        ArrayList<String> data = xslObj.getData("p197128590");
         Object[][] returnArray = new Object[1][3];
         returnArray[0][0] = data.get(0);// servicePriceExpected
         returnArray[0][1] = data.get(1);// prodPriceModalExpected
