@@ -14,7 +14,8 @@ import java.util.regex.Pattern;
 public class CartModalWindowPO extends BasePageObject {
 
     private List<ProductInCartPO> productsInCartList;
-    private int totalModal;
+    private int totalModalInt;
+    private String totalModalString;
 
     public CartModalWindowPO(WebDriver driver) {
 
@@ -35,8 +36,7 @@ public class CartModalWindowPO extends BasePageObject {
     return productsInCartList;
 }
 
-
-    public int getTotalModal() {
+    public int getTotalModalInt() {
                 String priceString = new TextField(driver, CartModalWindowLocators.CART_TOTAL_MODAL).getText();
         Pattern p = Pattern.compile("[\\d\\s]+");
         Matcher m = p.matcher(priceString);
@@ -45,9 +45,22 @@ public class CartModalWindowPO extends BasePageObject {
             String substring = priceString.substring(m.start(), m.end());
             substring = substring.trim();
             substring = substring.replace(" ", "");
-            totalModal = Integer.parseInt(substring);
+            totalModalInt = Integer.parseInt(substring);
         }
-        return totalModal;
+        return totalModalInt;
+    }
+    public String getTotalModalString() {
+        totalModalString = new TextField(driver, CartModalWindowLocators.CART_TOTAL_MODAL).getText();
+        Pattern p = Pattern.compile("[\\d\\s]+");
+        Matcher m = p.matcher(totalModalString);
+
+        if (m.find()) {
+            String substring = totalModalString.substring(m.start(), m.end());
+            substring = substring.trim();
+            substring = substring.replace(" ", "");
+            totalModalString = substring;
+        }
+        return totalModalString;
     }
 
 }

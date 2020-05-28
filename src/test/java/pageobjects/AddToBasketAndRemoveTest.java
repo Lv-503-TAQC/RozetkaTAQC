@@ -1,27 +1,14 @@
 package pageobjects;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
-
-import org.apache.poi.ss.util.NumberToTextConverter;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utils.DataFromXls;
 import utils.base;
 
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 public class AddToBasketAndRemoveTest extends base {
@@ -33,25 +20,55 @@ public class AddToBasketAndRemoveTest extends base {
     public void setUp() throws IOException {
         driver = initializeDriver();
         driver.get("https://rozetka.com.ua/apple_macbook_air_2020_256_space_gray/p197128590/");
-        //initialize new object
         allAboutProductTab = new AllAboutProductTabPO(driver);
         actionsWithProductsBlockPO = new ActionsWithProductsBlockPO(driver);
-        System.out.println("BeforeClass");
     }
 
+    @Test(dataProvider = "xlsData")
+    public void selectServiceOpt2(String servicePriceExpected,String prodPriceModalExpected,String totalPriceModalExpected) {
 
-    @BeforeMethod
-    public void initializeXls() throws IOException {
-        System.out.println("BeforeMethod");
+        String servicePrice = allAboutProductTab.getProductServicesBlock()
+                .createListOfCervices()
+                .get(0)
+                .clickCheckbox()
+                .getDropdown()
+                .selectOptionByIndex(1)
+                .getPriceString();
+        Assert.assertEquals(servicePrice,servicePriceExpected);
+
+
+        String prodPriceModal = actionsWithProductsBlockPO.addToCart()
+                .isAddedToCart()
+                .getCartModal()
+                .getProductsInCartList()
+                .get(0)
+                .getProdPriceModalString();
+        Assert.assertEquals(prodPriceModal,prodPriceModalExpected);
+
+        String totalPriceModal = actionsWithProductsBlockPO.getCartModal()
+                .getTotalModalString();
+        Assert.assertEquals(totalPriceModal,totalPriceModalExpected);
+
+    }
+
+    @DataProvider
+    public Object[] xlsData() throws IOException {
         DataFromXls xslObj = new DataFromXls();
         ArrayList<String> data = xslObj.getData("selectServiceOpt2");
-        String servicePriceExpected = data.get(0);
-        String prodPriceModalExpected = data.get(1);
-        String totalPriceModalExpected = data.get(2);
+        Object[][] returnArray = new Object[1][3];
+        returnArray[0][0] = data.get(0);// servicePriceExpected
+        returnArray[0][1] = data.get(1);// prodPriceModalExpected
+        returnArray[0][2] = data.get(2);// totalPriceModalExpected
+        return returnArray;
+    }
+
+    @AfterMethod
+    public void refresh(){
+        driver.navigate().refresh();
     }
 
     @Test
-    public void selectServiceOpt2(String servicePriceExpected,String prodPriceModalExpected,String totalPriceModalExpected) {
+    public void selectServiceOpt1() {
 
         int servicePrice = allAboutProductTab.getProductServicesBlock()
                 .createListOfCervices()
@@ -59,8 +76,7 @@ public class AddToBasketAndRemoveTest extends base {
                 .clickCheckbox()
                 .getDropdown()
                 .selectOptionByIndex(1)
-                .getPrice();
-        Assert.assertEquals(servicePrice,servicePriceExpected);
+                .getPriceInt();
 
 
         int prodPriceModal = actionsWithProductsBlockPO.addToCart()
@@ -68,12 +84,10 @@ public class AddToBasketAndRemoveTest extends base {
                 .getCartModal()
                 .getProductsInCartList()
                 .get(0)
-                .getProdPriceModal();
-        Assert.assertEquals(prodPriceModal,prodPriceModalExpected);
+                .getProdPriceModalInt();
 
         int totalPriceModal = actionsWithProductsBlockPO.getCartModal()
-                .getTotalModal();
-        Assert.assertEquals(totalPriceModal,totalPriceModalExpected);
+                .getTotalModalInt();
 
         Assert.assertEquals(servicePrice+prodPriceModal, totalPriceModal);
     }

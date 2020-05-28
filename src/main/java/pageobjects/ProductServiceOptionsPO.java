@@ -21,7 +21,8 @@ public class ProductServiceOptionsPO extends BasePageObject {
     private Select prodOptionDropdown;
     private Checkbox prodOptionCheckbox;
     private String checkboxValue;
-    private int price;
+    private int priceInt;
+    private String priceString;
     private Button info;
     private List<WebElement> dropdOptions;
 
@@ -47,16 +48,13 @@ public class ProductServiceOptionsPO extends BasePageObject {
         return this;
     }
 
-    /**
+    /**ToDo
      * Method finds the options of the dropdown element.
      * Method which finds the dropdown is above
      * (see getDropdown()).
      * @return the dropdown element.
      */
-    public List<WebElement> getOptions () {
-        dropdOptions = this.getOptions();
-        return dropdOptions;
-    }
+
 
     /**
      * Method reads the option value.
@@ -109,8 +107,22 @@ public class ProductServiceOptionsPO extends BasePageObject {
      * is a part of AllAboutProductTabPO (see createListOfProductOptions()).
      * @return String with a price.
      */
-    public int getPrice() {
-       String priceString = new TextField(element, ADDITIONAL_SERVICE_PRICE).getText();
+    public int getPriceInt() {
+       String tempPriceString = new TextField(element, ADDITIONAL_SERVICE_PRICE).getText();
+        String regex = "[\\d\\s]+";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(tempPriceString);
+
+        if (m.find()) {
+            String substring = tempPriceString.substring(m.start(), m.end());
+            substring = substring.trim();
+            substring = substring.replace(" ", "");
+            priceInt = Integer.parseInt(substring);
+        }
+        return priceInt;
+    }
+    public String getPriceString() {
+        priceString = new TextField(element, ADDITIONAL_SERVICE_PRICE).getText();
         String regex = "[\\d\\s]+";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(priceString);
@@ -119,9 +131,9 @@ public class ProductServiceOptionsPO extends BasePageObject {
             String substring = priceString.substring(m.start(), m.end());
             substring = substring.trim();
             substring = substring.replace(" ", "");
-            price = Integer.parseInt(substring);
-                    }
-        return price;
+            priceString = substring;
+        }
+        return priceString;
     }
 
     /**

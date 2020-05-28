@@ -33,16 +33,18 @@ public class DataFromXls {
 
                 //the needed sheet found, now we are creating iterator to move through rows
                 Iterator<Row> rows = sheet.iterator();// sheet is collection of rows
-                Row firstrow = rows.next();
+                Row firstrow = rows.next();//?????
 
                 while(rows.hasNext())
                 {
                     Row r = rows.next();
 
-                    if(r.getCell(0).getStringCellValue().equalsIgnoreCase(testCaseName))
+                    if(r.getCell(0).getStringCellValue().equalsIgnoreCase(testCaseName))//???????
                     {
 ////after you grab purchase testcase row = pull all the data of that row and feed into test
                         Iterator<Cell>  cv = r.cellIterator();
+                        Cell firstcell = cv.next();//?????
+
                         while(cv.hasNext())
                         {
                             Cell c = cv.next();
