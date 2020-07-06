@@ -1,11 +1,18 @@
 
+import locators.HeaderLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobjects.ActionsWithProductsBlockPO;
 import pageobjects.CartModalWindowPO;
+import pageobjects.ComparisonPO;
 import pageobjects.ProductInCartPO;
+import pageobjects.helpers.Hacks;
+import utils.DriverManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,29 +21,38 @@ import java.util.concurrent.TimeUnit;
 
 import static utils.Constants.*;
 
-public class Main {
-    public static final String POPUP_BANNER_CLOSE_BUTTON = "//*[@class = 'exponea-close-cross']";
-
+public class Main extends DriverManager {
+    WebDriver driver = initializeDriver();
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty(KEY_TO_WINDOWS_CHROME_DRIVER, PATH_TO_WINDOWS_CHROME_DRIVER);
+        Main main = new Main();
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-
-        try {
-            driver.get("https://rozetka.com.ua/ua/apple_macbook_air_2020_256_space_gray/p197128590/");
-
-            boolean displayed = driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).isDisplayed();
-            if (displayed) {
-                driver.findElement(By.xpath(POPUP_BANNER_CLOSE_BUTTON)).click();
-                Thread.sleep(2000);
+        ComparisonPO po = new ComparisonPO(main.driver, "https://rozetka.com.ua/grafic-tablets/c83199/");
+        for(WebElement button : main.driver.findElements(By.cssSelector(".compare-button"))) {
+            try {
+                if (button.isEnabled()) {
+                    button.click();
+                }
+            } catch(Exception e) {
+                System.out.println(Hacks.sms("Ooops...", "."));
             }
-
-
-
-        } finally {
-            driver.quit();
         }
+        po.comparisonButtonHover();
+        List<WebElement> compareElements = main.driver.findElements(HeaderLocators.HEADER_COMPARISON_LI.getPath());
+        int howManyElements = compareElements.size();
+
+        System.out.println(Hacks.sms("Comparing list has " + howManyElements + " elements", ":"));
+
+
+        for(int i = 0; i < howManyElements; i++) {
+            compareElements.get(i).findElement(HeaderLocators._HEADER_COMPARISON_LI_DELETE.getPath()).click();
+        }
+
+        new WebDriverWait(main.driver, 3).until(ExpectedConditions.numberOfElementsToBe(HeaderLocators.HEADER_COMPARISON_LI.getPath(), 0));
+        System.out.println(Hacks.sms(String.valueOf(main.driver.findElements(HeaderLocators.HEADER_COMPARISON_LI.getPath()).size()), "z"));
+
+
+
+
+        main.driver.quit();
     }
 }

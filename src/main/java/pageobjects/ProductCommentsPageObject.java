@@ -7,11 +7,12 @@ import pageelements.Button;
 import pageelements.DropDown;
 import pageelements.Label;
 import pageelements.LinkedButton;
+import pageobjects.helpers.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductCommentsPageObject extends BasePageObject {
+public class ProductCommentsPageObject extends BasePageObject implements Product {
     private LinkedButton reviewTabBtn;
 
     private Button addNewCommentBtn;
