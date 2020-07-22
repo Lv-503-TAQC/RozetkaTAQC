@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import static utils.Constants.*;
 
-public class base {
+public class driverManager {
     public static WebDriver driver;
     public Properties prop;
 
